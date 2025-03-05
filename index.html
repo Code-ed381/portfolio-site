@@ -28,19 +28,19 @@ https://templatemo.com/tm-530-mini-profile
                 <h1 class="tm-brand-name">Edwin Adjei</h1>
                 <p class="tm-brand-description mb-0">Full Stack Developer</p>
                 <div class="mt-4">
-                  <a href="https://facebook.com" target="_blank" class="tm-social-icon">
+                  <a href="https://www.facebook.com/profile.php?id=100079719614516" target="_blank" class="tm-social-icon">
                     <i class="fab fa-facebook-f"></i>
                   </a>
-                  <a href="https://twitter.com" target="_blank" class="tm-social-icon">
+                  <a href="https://x.com/Code_ed381" target="_blank" class="tm-social-icon">
                     <i class="fab fa-twitter"></i>
                   </a>
-                  <a href="https://instagram.com" target="_blank" class="tm-social-icon">
+                  <a href="https://www.instagram.com/adjei_edwin/" target="_blank" class="tm-social-icon">
                     <i class="fab fa-instagram"></i>
                   </a>
                   <a href="https://linkedin.com" target="_blank" class="tm-social-icon">
                     <i class="fab fa-linkedin"></i>
                   </a>
-                  <a href="https://github.com" target="_blank" class="tm-social-icon">
+                  <a href="https://github.com/Code-ed381" target="_blank" class="tm-social-icon">
                     <i class="fab fa-github"></i>
                   </a>
                 </div>
@@ -163,20 +163,19 @@ https://templatemo.com/tm-530-mini-profile
               <div class="tm-contact-item">
                 <i class="fas fa-5x fa-briefcase tm-contact-item-icon"></i>
                 <p class="mb-0">
-                  Hailing from Accra, I’m all about getting it done right and on time. I adapt to your needs, adding a fresh spark to every project—your vision, my commitment.
+                  I keep it professional, treat you right, and value your input. Your goals matter to me, and I handle every job with care and class.
                 </p>
               </div>
               <div class="tm-contact-item">
                 <i class="fas fa-5x fa-building tm-contact-item-icon"></i>
                 <p class="mb-0">
-                  With 4 years of building apps, websites, and more—plus time at AJXT - Technology & Agriculture and Openlabs IT School—I turn your ideas into smooth, solid work with a Ghanaian vibe.
-                </p>
+                  I deliver on time and bring a creative edge. I tweak things till they’re perfect—your project’s in good hands.                </p>
               </div>
 
               <div class="tm-contact-item">
                 <i class="fas fa-5x fa-balance-scale tm-contact-item-icon"></i>
                 <p class="mb-0">
-                  My prices won’t break your pocket, but the quality? Top-notch. You get dope, user-friendly results that feel like a steal—pure value with every job.
+                  My rates are easy on your wallet, but the quality’s high. You get sharp, user-friendly results that make every cedi count.                
                 </p>
               </div>
             </div>
@@ -190,6 +189,7 @@ https://templatemo.com/tm-530-mini-profile
               method="POST"
               id="tmContactForm"
               class="tm-bg-white-transparent"
+              onsubmit="sendEmail(event)"
             >
               <div class="form-group">
                 <input
@@ -209,6 +209,17 @@ https://templatemo.com/tm-530-mini-profile
                   class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
                   placeholder="Email"
                   required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="contact_phone"
+                  name="contact_phone"
+                  class="form-control rounded-0 border-top-0 border-right-0 border-left-0"
+                  placeholder="Phone"
+                  value="0542020730"
+                  readonly
                 />
               </div>
               <div class="form-group">
@@ -236,19 +247,19 @@ https://templatemo.com/tm-530-mini-profile
         <div class="row">
           <footer class="col-12">
             <div class="text-center mb-4">
-              <a href="https://facebook.com" target="_blank" class="tm-social-icon">
+              <a href="https://www.facebook.com/profile.php?id=100079719614516" target="_blank" class="tm-social-icon">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="https://twitter.com" target="_blank" class="tm-social-icon">
+              <a href="https://x.com/Code_ed381" target="_blank" class="tm-social-icon">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="https://instagram.com" target="_blank" class="tm-social-icon">
+              <a href="https://www.instagram.com/adjei_edwin/" target="_blank" class="tm-social-icon">
                 <i class="fab fa-instagram"></i>
               </a>
               <a href="https://linkedin.com" target="_blank" class="tm-social-icon">
                 <i class="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com" target="_blank" class="tm-social-icon">
+              <a href="https://github.com/Code-ed381" target="_blank" class="tm-social-icon">
                 <i class="fab fa-github"></i>
               </a>
             </div>
@@ -264,6 +275,7 @@ https://templatemo.com/tm-530-mini-profile
     <!-- section -->
     <script src="js/jquery.min.js"></script>
     <script src="js/parallax.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
       function detectMsBrowser() {
         using_ms_browser =
@@ -285,6 +297,29 @@ https://templatemo.com/tm-530-mini-profile
         $(".tm-brand-container-outer").css({
           "margin-top": -bottomContainerHeight + "px"
         });
+      }
+
+      function sendEmail(event) {
+        event.preventDefault();
+        var name = document.getElementById('contact_name').value;
+        var email = document.getElementById('contact_email').value;
+        var message = document.getElementById('contact_message').value;
+
+        Email.send({
+          SecureToken: "YOUR_SMTPJS_SECURE_TOKEN", // Replace with your actual SMTP.js secure token
+          To: 'edwinadjei381@gmail.com',
+          From: email,
+          Subject: "New Contact Form Submission",
+          Body: `<h2>Contact Form Submission</h2>
+                 <p><strong>Name:</strong> ${name}</p>
+                 <p><strong>Email:</strong> ${email}</p>
+                 <p><strong>Message:</strong></p>
+                 <p>${message}</p>`
+        }).then(
+          message => alert("Mail sent successfully")
+        ).catch(
+          error => alert("Failed to send mail: " + error)
+        );
       }
 
       $(function() {
