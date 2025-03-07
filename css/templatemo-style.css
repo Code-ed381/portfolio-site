@@ -90,6 +90,7 @@ a:hover {
 
 .tm-brand-container {
   padding: 75px 110px;
+  text-align: center;
 }
 
 .tm-brand-name {
@@ -344,6 +345,7 @@ p {
 @media (max-width: 572px) {
   .tm-brand-container {
     padding: 45px;
+    text-align: center;
   }
 }
 
@@ -354,5 +356,31 @@ p {
 
   .tm-brand-container {
     padding: 25px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .tm-welcome-container {
+    min-height: auto;
+    padding: 20px;
+    margin-top: 50px; /* Adjust margin to ensure nothing is hidden at the top */
+  }
+
+  .tm-welcome-left {
+    padding: 20px;
+  }
+
+  .tm-welcome-title {
+    font-size: 2rem;
+  }
+
+  .tm-welcome-left p {
+    font-size: 1rem;
+  }
+
+  .tm-welcome-img {
+    width: 100%;
+    height: auto;
   }
 }
