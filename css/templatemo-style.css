@@ -364,7 +364,7 @@ p {
   .tm-welcome-container {
     min-height: auto;
     padding: 20px;
-    margin-top: 50px; /* Adjust margin to ensure nothing is hidden at the top */
+    margin-top: 20px; /* Adjust margin to ensure nothing is hidden at the top */
   }
 
   .tm-welcome-left {
