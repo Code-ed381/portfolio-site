@@ -288,7 +288,6 @@ p {
 }
 
 .tm-social-icon:hover {
-  color: ;
   transform: scale(1.2);
 }
 
@@ -361,24 +360,31 @@ p {
 }
 
 @media (max-width: 768px) {
+  #tmWelcome {
+    background-image: none !important;
+    display: block;
+  }
+  .tm-brand-container-outer {
+    margin-top: 0 !important;
+  }
   .tm-welcome-container {
-    min-height: auto;
-    padding: 20px;
+    display: block;
+    position: static;
     margin-top: 20px; /* Adjust margin to ensure nothing is hidden at the top */
   }
-
+  .tm-welcome-left-col, .tm-welcome-right {
+    width: 100%;
+    padding: 20px;
+  }
   .tm-welcome-left {
     padding: 20px;
   }
-
   .tm-welcome-title {
     font-size: 2rem;
   }
-
   .tm-welcome-left p {
     font-size: 1rem;
   }
-
   .tm-welcome-img {
     width: 100%;
     height: auto;
